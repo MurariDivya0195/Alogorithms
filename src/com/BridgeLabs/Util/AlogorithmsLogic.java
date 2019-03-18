@@ -64,27 +64,34 @@ public class AlogorithmsLogic {
 	public static void insertionSort1(int[] list){
 		
 		int i,j, key, temp,w;
-		for(i=0;i<list.length;i++)
+		
 		{
-			for(j=0;j<=i;j++)
+			
 			{
-				if(list[j]>list[i])
-				{ 
-					temp=list[j];
-					list[j]=list[i];
-				for( w=i;w>j+1;w--)
+				for(i=0;i<list.length;i++)
 				{
-					list[w]=list[w-1];
-		     		
-				
+					for(j=0;j<=i;j++)
+					{
+						if(list[j]>list[i])
+						{ 
+						  temp=list[j];
+							list[j]=list[i];
+						for( w=i;w>j+1;w--)
+						{
+							list[w]=list[w-1];
+				     		
+						
+						}
+						list[w]=temp;
+						
+					}  
+			     }	
+			
 				}
-				list[w]=temp;
-				
-			}  
-	     }	
-	
+					
+			}
 		}
-			for(int i1:list)
+		for(int i1:list)
 			{
 			System.out.println(i1);
 			}
@@ -122,6 +129,9 @@ public class AlogorithmsLogic {
 		        }		
 			}
 			
+	//logic to Farenhiet To celsius
+			
+			
 			
 			public static void temp_Convertion(){
 			double fahrenhiet,celsius;
@@ -157,7 +167,7 @@ public class AlogorithmsLogic {
 				
 				else
 				{
-					int mid = (low+high)/2;
+				   	 int mid = (low+high)/2;
 					 mergeSort(arr1,low,high);
 					 mergeSort(arr1,mid+1,high);
 					 mergeSort(arr1,low,mid+1);
@@ -165,6 +175,79 @@ public class AlogorithmsLogic {
 				}
 				
 			}
+	// Binary Search
+			
+			public static int binarySearch(String[]s, String word){
+				
+				int l=s.length-1;
+				int nl=0;
+				while(nl<=l)
+				{
+					int m=(nl+l)/2;
+					int mid=word.compareTo(s[m]);
+					if(mid==0)
+						return m;
+					if(mid>0)
+						nl=m+1;
+					else
+						l=m-1;
 					
+				}
+				
+			
+			return -1;
 }
-
+			
+			
+//LOGIC FOR MONTLY PAYMENT
+			
+			
+			public static double montlyPayment(double p, double t, double r)
+			{
+					double n= 12*t;
+					double r0=r/(12*100);
+					double payment=p*r0/1-Math.pow(1+r0,-n);
+					return payment;
+					
+				
+			}
+		
+	//MERGE SORT
+   //split the given array			
+	public static void merge(String[] names)
+	{
+		if(names.length>=2)
+		{
+			String[] left= new String[names.length/2];
+			String[] right= new String[names.length-names.length/2];
+			for(int i=0;i<left.length;i++){
+				left[i]=names[i];
+			}
+			
+			for(int i=0;i<right.length;i++){
+				right[i]=names[i + names.length/2];
+			}
+			merge(left);
+			merge(right);
+			mergeSort(names,left,right);
+		}
+	}
+	//sort and merge
+	public static void mergeSort(String[] names, String[] left, String[] right)
+       {
+		
+		int a=0;
+		int b=0;
+		for(int i=0;i<names.length;i++)
+		{
+			if(b>=right.length || (a<left.length && left[a].compareToIgnoreCase(right[b]) <0)){
+				names[i]=left[a];
+				a++;
+			}
+			else{
+				names[i]=right[b];
+				b++;
+			}
+		}
+		}
+}

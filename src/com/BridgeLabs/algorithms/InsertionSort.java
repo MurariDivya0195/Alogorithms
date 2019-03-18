@@ -16,6 +16,7 @@ public class InsertionSort {
 			
 		
 		 list[i] = AlogorithmsLogic.getInt();
+		 
 		}
 		
 		
